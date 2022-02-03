@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/reverse-integer/
+
 class Solution:
     def reverse(self, x: int) -> int:
         while x%10 == 0 and not x == 0:
