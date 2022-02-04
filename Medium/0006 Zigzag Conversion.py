@@ -3,33 +3,45 @@ class Solution:
     def convert(self, s: str, numRows: int) -> str:
         if numRows == 1:
             return s
-        
-        l = len(s)
+
+        res = ""
+
+        list = ["" for x in range(numRows)]
+
+        #print(list)
+
+        length = len(s)
+        iter = 0
+        i = 0
+        flag = False
+
+        while (length!=0):
+
+            if iter<numRows and flag!= True:
+                list[iter]+= s[i]
+                i+=1
+                iter+=1
+                length-=1
+                if iter == numRows-1:
+                    flag = True
+
+            elif flag==True:
+
+                list[iter]+= s[i]
+                iter -= 1
+                i+=1
+                length -= 1
 
 
-        arr=["" for x in range(l)]
-        row = 0
-        
-        for i in range(l):
+                if iter== 0:
+                    flag = False
 
-            arr[row] += s[i]
 
-            if row == numRows - 1:
-                down = False
+            #print(list)
 
-            elif row == 0:
-                down = True
 
-            if down:
-                row += 1
-            else:
-                row -= 1
 
-        # Print concatenation
-        # of all rows
-        final = ""
-        for i in range(l):
-            final += arr[i]
-        return final
-        
+
+        return "".join(list)
+
         
