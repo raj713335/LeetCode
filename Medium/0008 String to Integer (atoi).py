@@ -16,6 +16,23 @@ class Solution:
                 return -2**31
             return int(float(pattern.search(s.split()[0]).group()))
         return 0
+    
+"""
+        pattern = re.compile("^[+|-]{0,1}[0-9]+\.{0,1}[0-9]*")
+
+        try:
+            ss = int(float(re.search(pattern, s.split()[0]).group()))
+
+            if ss < -1*(2**31):
+                return -1*(2**31)
+            elif ss > (2**31 -1):
+                return (2**31 -1)
+            else:
+                return ss
+
+        except:
+            return 0
+"""
 
             
         
