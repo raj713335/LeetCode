@@ -1,0 +1,13 @@
+# https://leetcode.com/problems/swap-salary/
+
+
+# Write your MySQL query statement below
+
+UPDATE salary
+    SET 
+    sex = CASE 
+        WHEN sex LIKE 'm' THEN 'f'
+        ELSE 'm'
+    END
+
+        
