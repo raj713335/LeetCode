@@ -1,0 +1,12 @@
+# https://leetcode.com/problems/bank-account-summary-ii/
+
+
+# Write your MySQL query statement below
+
+SELECT U.name as NAME, sum(T.amount) as BALANCE 
+FROM Users U 
+INNER JOIN 
+Transactions T
+ON U.account = T.account
+GROUP BY T.account
+HAVING BALANCE > 10000
