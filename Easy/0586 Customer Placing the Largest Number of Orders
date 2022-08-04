@@ -1,0 +1,12 @@
+# https://leetcode.com/problems/customer-placing-the-largest-number-of-orders/
+
+
+# Write your MySQL query statement below
+
+SELECT L.customer_number 
+FROM 
+(SELECT O.customer_number , count(*) as Countx 
+FROM Orders O
+GROUP BY O.customer_number 
+ORDER BY Countx DESC
+LIMIT 1) AS L
