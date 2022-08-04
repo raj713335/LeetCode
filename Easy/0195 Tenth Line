@@ -1,0 +1,5 @@
+# https://leetcode.com/problems/tenth-line/
+
+# Read from the file file.txt and output the tenth line to stdout.
+
+python3 -c 'a = [l for l in open("file.txt")]; print("" if len(a) < 10 else a[9].strip())'
