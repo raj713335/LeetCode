@@ -4,25 +4,30 @@
 class BrowserHistory:
 
     def __init__(self, homepage: str):
-        self.history = [homepage]
-        self.curr = 0
-        self.bound = 0
+
+        self.list = [homepage]
+        self.current = 0
+        
 
     def visit(self, url: str) -> None:
-        self.curr += 1
-        if self.curr == len(self.history):
-            self.history.append(url)
-        else:
-            self.history[self.curr] = url
-        self.bound = self.curr
+
+        self.list = self.list[:self.current+1] + [url]
+        self.current = self.current + 1
+        
 
     def back(self, steps: int) -> str:
-        self.curr = max(self.curr - steps, 0)
-        return self.history[self.curr]
+
+        self.current -= steps
+        if self.current < 0:
+            self.current = 0
+        return self.list[self.current]
+        
 
     def forward(self, steps: int) -> str:
-        self.curr = min(self.curr + steps, self.bound)
-        return self.history[self.curr]
+        self.current += steps
+        if self.current >= len(self.list):
+            self.current = len(self.list) -1
+        return self.list[self.current]
         
 
 
