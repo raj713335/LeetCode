@@ -1,4 +1,4 @@
-# https://leetcode.com/problems/counter/description/
+// https://leetcode.com/problems/counter/description/
 
 function createCounter(n: number): () => number {
     return function() {
