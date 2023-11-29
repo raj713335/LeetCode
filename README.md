@@ -3,40 +3,6 @@
 
 ![Chrome Dino](https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4ff07986208593.5d9a654e92f36.gif)
 
-### Hi there 👋, I'm a Professional software engineer and Computer Researcher
-
-<p align="left">
-  <a href="https://leetcode.com/raj713335/">
-    <img src="https://cp-logo.vercel.app/leetcode/raj713335" alt="Leet code rating" />
-  </a>
-  <a href="https://stackoverflow.com/users/9674286/arnab-das">
-    <img alt="Stack Overflow reputation" src="https://img.shields.io/stackexchange/stackoverflow/r/9674286?color=orange&label=reputation&logo=stackoverflow">
-  </a>
-  <a href="https://github.com/raj713335?tab=followers">
-    <img alt="GitHub followers" src="https://img.shields.io/github/followers/raj713335?color=green&logo=github">
-  </a>
-  <a href="https://www.hackerrank.com/raj713335">
-    <img alt="HackerRank followers" src="https://img.shields.io/badge/Hackerrank-Arnab%20-green.svg">
-  </a>
-</p>
-
-
-
-<!--
-**raj713335/raj713335** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile .
--->
-
-<!--Here are some ideas to get you started:-->
-
-- 🔭 I’m currently working on Deep Neural Network.
-- 🌱 I’m currently learning Natural Language Processing.
-- 👯 I’m looking to collaborate on Machine Learning Projects.
-- 🤔 I’m looking for help with PoseNet.
-- 💬 Ask me about anything and everything.
-- 📫 How to reach me: https://www.linkedin.com/in/raj713335 or https://raj713335.github.io/WEB_APP/ .
-- 😄 Pronouns: I love Cats.
-- ⚡ Fun fact: Intuition fails in higher dimensions.
-- 📝 Checkout my [Resume](FILE/Resume.pdf).
 
 #### Development Stuffs:
 
