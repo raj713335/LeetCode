@@ -4,7 +4,7 @@
 ![Chrome Dino](https://theabbie.github.io/blog/assets/leetcode-grinding-guide.jpg)
 
 
-#### Development Stuffs:
+#### Development Stuff:
 
 <b>&#128200; Competitive Programming⚡ Github Stats</b>
 
