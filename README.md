@@ -1,4 +1,4 @@
-# LeetCode.
+# LeetCode .
 
 
 ![Chrome Dino](https://theabbie.github.io/blog/assets/leetcode-grinding-guide.jpg)
