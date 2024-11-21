@@ -2,7 +2,8 @@
 
 class Solution:
     def intToRoman(self, num: int) -> str:
-        a={
+
+        roman = {
             'I':1,
             'IV':4,
             'V':5,
@@ -17,13 +18,19 @@ class Solution:
             'CM':900,
             'M':1000
         }
-        c=[]
-        for k,v in reversed(a.items()):
-            while num>0:
-                if v<=num:
-                    c.append(k)
-                    num-=v
+
+        res = []
+        
+        for key, value in reversed(roman.items()):
+            while num > 0:
+                if value <= num:
+                    res.append(key)
+                    num -= value
                 else:
                     break
-        return "".join(c)
+
+        return "".join(res)
+
+                
+
         
