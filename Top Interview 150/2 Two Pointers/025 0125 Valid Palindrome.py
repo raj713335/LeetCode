@@ -10,6 +10,3 @@ class Solution:
         m = re.sub(r'[^a-z0-9]*','', s)
         
         return m[::-1]==m
-        
-        
-        
