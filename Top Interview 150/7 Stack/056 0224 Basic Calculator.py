@@ -3,40 +3,40 @@
 class Solution:
     def calculate(self, s: str) -> int:
 
-        curr = res = 0
+        number = 0
+        result = 0
         sign = 1
 
         stack = []
 
-        for char in s:
-            if char.isdigit():
-                curr = curr * 10 + int(char)
-            elif char in ['+', '-']:
-                res += sign * curr
+        for val in s:
+            if val.isdigit():
+                number = (number * 10) + int(val)
+            elif val in ["+", "-"]:
+                result += (sign * number)
+                
+                number = 0
 
-                if char == "+":
+                if val == "+":
                     sign = 1
-                else:
+                if val == "-":
                     sign = -1
-
-                curr = 0
-
-            elif char == "(":
-                stack.append(res)
+            
+            elif val == "(":
+                stack.append(result)
                 stack.append(sign)
 
+                result = 0
                 sign = 1
-                res = 0
             
-            elif char == ")":
+            elif val == ")":
+                result += (sign * number)
+                result *= stack.pop()
+                result += stack.pop()
 
-                res += sign * curr
-                res *= stack.pop()
-                res += stack.pop()
+                number = 0
 
-                curr = 0
-
-        return res + sign * curr
+        return result + (sign * number)
 
 
         
