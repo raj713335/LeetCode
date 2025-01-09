@@ -13,18 +13,35 @@ class Node:
 class Solution:
     def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
 
-        cur, nxt = root, root.left if root else None
+        if not root:
+            return root
 
+        q = collections.deque()
+        q.append(root)
 
-        while cur and nxt:
-            cur.left.next = cur.right
-            if cur.next:
-                cur.right.next = cur.next.left
-
-            cur = cur.next
-            if not cur:
-                cur = nxt
-                nxt = cur.left
+        while q:
+            curr = q.popleft()
+            if curr.left:
+                curr.left.next = curr.right
+                if curr.next:
+                    curr.right.next = curr.next.left
+                q.append(curr.left)
+                q.append(curr.right)
 
         return root
+
+        # cur, nxt = root, root.left if root else None
+
+
+        # while cur and nxt:
+        #     cur.left.next = cur.right
+        #     if cur.next:
+        #         cur.right.next = cur.next.left
+
+        #     cur = cur.next
+        #     if not cur:
+        #         cur = nxt
+        #         nxt = cur.left
+
+        # return root
         
