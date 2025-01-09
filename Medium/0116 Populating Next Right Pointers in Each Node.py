@@ -10,6 +10,8 @@ class Node:
         self.next = next
 """
 
+import collections
+
 class Solution:
     def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
 
