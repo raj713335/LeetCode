@@ -1,43 +1,39 @@
-# https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/description/
-
-
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
+import collections
+
 class Solution:
     def zigzagLevelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-
-
+        
         if not root:
             return []
 
-        stack = collections.deque([root])
-
+        q = collections.deque([root])
         res = []
+        depth = 0
 
-        count = 0
-
-        while stack:
+        while q:
             temp = []
-            count += 1
-            for _ in range(0, len(stack)):
-                
-                curr = stack.popleft()
+            depth += 1
+            for _ in range(0, len(q)):
+
+                curr = q.popleft()
                 temp.append(curr.val)
 
-
                 if curr.left:
-                    stack.append(curr.left)
-                
+                    q.append(curr.left)
+
                 if curr.right:
-                    stack.append(curr.right)
-            if count % 2 == 0:
+                    q.append(curr.right)
+
+            if depth % 2 == 0:
                 res.append(temp[::-1])
             else:
                 res.append(temp)
 
         return res
-        
