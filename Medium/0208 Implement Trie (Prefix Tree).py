@@ -1,31 +1,49 @@
 # https://leetcode.com/problems/implement-trie-prefix-tree/description/
 
 
+class TrieNode():
+    def __init__(self):
+        self.children = {}
+        self.endOfWord = False
+
 class Trie:
 
     def __init__(self):
-        self.listx = []
+        self.root = TrieNode()
         
 
     def insert(self, word: str) -> None:
-        self.listx.append(word)
+        curr = self.root
+
+        for c in word:
+            if c not in curr.children:
+                curr.children[c] = TrieNode()
+            curr = curr.children[c]
+        curr.endOfWord = True
         
 
     def search(self, word: str) -> bool:
-        for each in self.listx:
-            if each == word:
-                return True
+        curr = self.root
 
-        return False
+        for c in word:
+            if c not in curr.children:
+                return False
+            else:
+                curr = curr.children[c]
+
+        return curr.endOfWord 
         
 
     def startsWith(self, prefix: str) -> bool:
-        len_prefix = len(prefix)
-        for each in self.listx:
-            if each[:len_prefix] == prefix:
-                return True
+        curr = self.root
 
-        return False
+        for c in prefix:
+            if c not in curr.children:
+                return False
+            else:
+                curr = curr.children[c]
+
+        return True
 
         
 
