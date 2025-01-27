@@ -2,20 +2,19 @@
 
 class Solution:
     def findPeakElement(self, nums: List[int]) -> int:
-
-        # return nums.index(max(nums))
         
-        left, right = 0, len(nums) - 1
+        l, r = 0, len(nums) - 1
          
-        while left < right: 
-            index = (left + right)//2    
-            # peak is in the left half, excluding index
-            if nums[index] <= nums[index +1]:
-                left = index + 1
+        while l <= r: 
+            mid = (l + r)//2    
+            # left neighbour greater
+            if mid > 0 and nums[mid] < nums[mid - 1]:
+                r = mid - 1
 
-            # peak is in the right half, including index     
-            else :
-                right = index 
+            # right neighbour greater
+            elif mid < len(nums) - 1 and nums[mid] < nums[mid + 1]:
+                l = mid + 1
+            else:
+                return mid
    
-        return left
         
