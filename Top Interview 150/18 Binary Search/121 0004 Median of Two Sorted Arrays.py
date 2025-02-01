@@ -22,7 +22,7 @@ class Solution:
             Bright = B[j+1] if (j+1) < len(B) else float("infinity")
 
             if Aleft <= Bright and Bleft <= Aright:
-                if total % 2:
+                if total % 2 != 0:
                     return min(Aright, Bright)
                 else:
                     return (max(Aleft, Bleft) + min(Aright, Bright)) / 2
