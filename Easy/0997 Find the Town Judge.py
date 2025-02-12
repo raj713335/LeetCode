@@ -1,42 +1,21 @@
 # https://leetcode.com/problems/find-the-town-judge/description/
 
 
-class Solution:
+from collections import defaultdict
 
+class Solution:
     def findJudge(self, n: int, trust: List[List[int]]) -> int:
 
-        dictx = {}
+        edges_list = defaultdict(int)
 
-        setx = {}
+        for trustee, trust in trust:
+            edges_list[trust] += 1
+            edges_list[trustee] -= 1
 
-        if trust == []:
 
-            if n == 1:
-
-                return 1
-
-            if n == 2:
-
-                return -1
-
-        for each in trust:
-
-            setx[each[0]] = 1
-
-            if each[1] not in dictx:
-
-                dictx[each[1]] = [each[0]]
-
-            else:
-
-                dictx[each[1]].append([each[0]])
-
-        for key, value in dictx.items():
-
-            if len(value) == n-1:
-
-                if key not in setx:
-
-                    return key
-
+        for person in range(1, n+1):
+            if edges_list[person] == n - 1:
+                return person
+        
         return -1
+        
