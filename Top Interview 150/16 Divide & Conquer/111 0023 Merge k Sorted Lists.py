@@ -7,20 +7,34 @@
 #         self.next = next
 class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
-        head = ListNode(None)
-        curr = head
-        h = []
-        for i in range(len(lists)):
-            if lists[i]:
-                heapq.heappush(h, (lists[i].val, i))
-                lists[i] = lists[i].next
-        
-        while h:
-            val, i = heapq.heappop(h)
-            curr.next = ListNode(val)
+        if not lists:  # If lists is empty, return None
+            return None
+        return self.mergeDivide(lists, 0, len(lists) - 1)
+
+    def mergeDivide(self, lists, left, right):
+        if left == right:  # Base case: only one list to return
+            return lists[left]
+
+        mid = (left + right) // 2
+        left_merged = self.mergeDivide(lists, left, mid)
+        right_merged = self.mergeDivide(lists, mid + 1, right)
+
+        return self.mergeTwoLists(left_merged, right_merged)
+
+    def mergeTwoLists(self, l1, l2):
+        dummy = ListNode(0)
+        curr = dummy
+
+        while l1 and l2:
+            if l1.val < l2.val:
+                curr.next = l1
+                l1 = l1.next
+            else:
+                curr.next = l2
+                l2 = l2.next
             curr = curr.next
-            if lists[i]:
-                heapq.heappush(h, (lists[i].val, i))
-                lists[i] = lists[i].next
-        
-        return head.next
+
+        # Append remaining nodes
+        curr.next = l1 if l1 else l2
+
+        return dummy.next
