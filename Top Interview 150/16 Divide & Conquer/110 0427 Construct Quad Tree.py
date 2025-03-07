@@ -1,5 +1,6 @@
 # https://leetcode.com/problems/construct-quad-tree/description/
 
+
 """
 # Definition for a QuadTree node.
 class Node:
@@ -15,14 +16,36 @@ class Node:
 class Solution:
     def construct(self, grid: List[List[int]]) -> 'Node':
 
-         # check if it is a leaf node
-        if all(cell == grid[0][0] for row in grid for cell in row):
-            return Node(bool(grid[0][0]), True)
-        
-        # if not, return a node with all smaller grids
-        n = len(grid) // 2
-        return Node(True, False, self.construct([row[:n] for row in grid[:n]]),
-                                 self.construct([row[n:] for row in grid[:n]]),
-                                 self.construct([row[:n] for row in grid[n:]]),
-                                 self.construct([row[n:] for row in grid[n:]]))
+        def buildNode(x1, y1, x2, y2):
+            
+            # Check if the grid has the same value
+            first_val = grid[x1][y1]
+            all_same = True
+
+            for i in range(x1, x2+1):
+                for j in range(y1, y2+1):
+                    if grid[i][j] != first_val:
+                        all_same = False
+                        break
+            
+            if all_same:
+                return Node(
+                    val = first_val,
+                    isLeaf = True
+                )
+
+            # If not, divide the grid into four sub-grids
+            mid_x = (x1 + x2) // 2
+            mid_y = (y1 + y2) // 2
+
+            return Node(
+                val = True, # Arbitrary value when it's not a leaf
+                isLeaf = False,
+                topLeft = buildNode(x1, y1, mid_x, mid_y),
+                topRight = buildNode(x1, mid_y + 1, mid_x, y2),
+                bottomLeft = buildNode(mid_x + 1, y1, x2, mid_y),
+                bottomRight = buildNode(mid_x + 1, mid_y + 1, x2, y2)
+            )
+
+        return buildNode(0, 0, len(grid)-1, len(grid)-1)
         
