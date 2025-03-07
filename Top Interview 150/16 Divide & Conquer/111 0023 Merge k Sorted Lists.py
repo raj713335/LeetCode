@@ -22,7 +22,7 @@ class Solution:
         return self.mergeTwoLists(left_merged, right_merged)
 
     def mergeTwoLists(self, l1, l2):
-        dummy = ListNode(0)
+        dummy = ListNode()
         curr = dummy
 
         while l1 and l2:
