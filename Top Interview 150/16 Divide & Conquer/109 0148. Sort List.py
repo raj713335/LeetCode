@@ -30,7 +30,7 @@ class Solution:
 
         # Step 3: Merge two sorted halves
         def merge(l1, l2):
-            dummy = ListNode(0)  # Dummy node to start merging
+            dummy = ListNode()  # Dummy node to start merging
             tail = dummy
             
             while l1 and l2:
