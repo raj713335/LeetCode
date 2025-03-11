@@ -1,10 +1,9 @@
 # https://leetcode.com/problems/house-robber/description/
-
+# Time Complexity: O(n)
+# Space Complexity: O(n)
 
 class Solution:
     def minCostClimbingStairs(self, cost: List[int]) -> int:
-
-
         def minCost(i, memo={}):
             if i in memo:
                 return memo[i]
@@ -21,7 +20,6 @@ class Solution:
 
 class Solution:
     def rob(self, nums: List[int]) -> int:
-
         def maxCost(i, memo={}):
             if i in memo:
                 return memo[i]
