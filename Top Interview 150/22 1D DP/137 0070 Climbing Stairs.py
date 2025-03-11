@@ -1,4 +1,6 @@
 # https://leetcode.com/problems/climbing-stairs/description/
+# Time Complexity: O(n)
+# Space Complexity: O(n)
 
 
 class Solution:
