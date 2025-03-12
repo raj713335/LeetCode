@@ -8,17 +8,16 @@ class Solution:
 
         m, n = len(obstacleGrid), len(obstacleGrid[0])
 
-        def dfs(m, n, memo={}):
-
-            if (m,n) in memo:
-                return memo[m,n]
-            elif m == 0 and n == 0:
-                return 1 if obstacleGrid[m][n] == 0 else 0
-            elif m < 0 or n < 0 or obstacleGrid[m][n] == 1:
+        def dfs(i, j, memo = {}):
+            if (i, j) in memo:
+                return memo[i, j]
+            if i == m-1 and j == n-1:
+                return 1 if  obstacleGrid[i][j] == 0 else 0
+            
+            if i < 0 or i >= m or j < 0 or j >= n or obstacleGrid[i][j] == 1:
                 return 0
             else:
-                memo[m,n] = dfs(m-1,n, memo) + dfs(m, n-1, memo)
-            return memo[m, n]
+                memo[i, j] = dfs(i+1, j, memo) + dfs(i, j+1, memo)
+            return memo[i, j]
 
-        return dfs(m-1, n-1)
-            
+        return dfs(0, 0)
