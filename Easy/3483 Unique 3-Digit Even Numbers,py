@@ -1,0 +1,25 @@
+# https://leetcode.com/problems/unique-3-digit-even-numbers/description/
+
+
+from itertools import permutations
+
+class Solution:
+    def totalNumbers(self, digits: List[int]) -> int:
+        
+        result = set()
+
+
+        for perm in permutations(digits, 3):
+
+            num = int(''.join(map(str, perm)))
+
+
+            if perm[0] != 0 and num % 2 == 0:
+                result.add(num)
+
+        return len(result)
+
+                
+        
+        
+        
