@@ -1,5 +1,8 @@
 # https://leetcode.com/problems/word-break/description/
 
+# Time Complexity: O(n * m * k) (where n is the length of string `s`, m is the number of words in `wordDict`, and k is the average length of words in `wordDict`)
+# Space Complexity: O(n) (due to the `dp` array of size `n + 1`)
+
 
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
