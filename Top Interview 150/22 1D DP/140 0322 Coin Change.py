@@ -1,5 +1,9 @@
 # https://leetcode.com/problems/coin-change/description/
 
+# Time Complexity: O(amount * n) (where amount is the target value and n is the number of coin denominations)
+# Space Complexity: O(amount) (due to the memoization dictionary `dp` and the recursion stack)
+
+
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
 
