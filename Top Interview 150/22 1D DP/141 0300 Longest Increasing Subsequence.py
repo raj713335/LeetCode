@@ -3,6 +3,26 @@
 # Time Complexity: O(n^2) (where n is the length of the input list `nums`, due to memoization over (index, prev) pairs and looping from index to n)
 # Space Complexity: O(n^2) (due to the memoization dictionary and the recursion stack)
 
+
+# Approach : Patience Sorting + Binary Search (O(n log n))
+
+import bisect
+
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+
+        sub = []
+        for num in nums:
+            i = bisect.bisect_left(sub, num)
+            if i == len(sub):
+                sub.append(num)
+            else:
+                sub[i] = num
+        return len(sub)
+            
+        
+
+
 # Recursive + Memoization Approach 
 
 class Solution:
