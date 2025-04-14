@@ -1,5 +1,8 @@
 # https://leetcode.com/problems/longest-palindromic-substring/description/
 
+# Time Complexity: O(n × n)
+# Space Complexity: O(n × n) (for the dp table)
+
 class Solution:
     def longestPalindrome(self, s: str) -> str:
 
