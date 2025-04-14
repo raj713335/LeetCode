@@ -1,5 +1,8 @@
 # https://leetcode.com/problems/longest-palindromic-substring/description/
 
+# Time Complexity: O(n × n)
+# Space Complexity: O(n × n) (for the dp table)
+
 class Solution:
     def longestPalindrome(self, s: str) -> str:
 
@@ -7,7 +10,7 @@ class Solution:
 
         # Edge case: empty or single character string
         if n < 2:
-            return 
+            return s
 
         dp = [[False] * (n) for s in range(n)]
 
