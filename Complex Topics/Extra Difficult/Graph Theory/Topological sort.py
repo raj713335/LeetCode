@@ -44,5 +44,41 @@ class Solution:
         else:
             return []  # Cycle exists (not possible in DAG by definition)
         
+
+
+class Solution:
+    
+    def topoSort(self, V, edges):
+        # Code here
+        
+        # Step 1: Build the adjacency list
+        graph = defaultdict(list)
+        for u, v in edges:
+            graph[u].append(v)
+
+        visited = [False] * V
+        topo_stack = []
+
+        def dfs(node):
+            visited[node] = True
+            for neighbor in graph[node]:
+                if not visited[neighbor]:
+                    dfs(neighbor)
+            topo_stack.append(node)  # Post-order
+
+        # Step 2: Visit all nodes
+        for i in range(V):
+            if not visited[i]:
+                dfs(i)
+
+        # Step 3: Reverse the result to get topological order
+        topo_stack = topo_stack[::-1]
+        
+        # If topo_order contains all nodes, return it
+        if len(topo_stack) == V:
+            return topo_stack
+        else:
+            return []  # Cycle exists (not possible in DAG by definition)
+        
         
 
