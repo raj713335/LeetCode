@@ -1,5 +1,40 @@
 # https://leetcode.com/problems/find-eventual-safe-states/description/
 
+
+from collections import defaultdict
+
+class Solution:
+    def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
+
+        V = len(graph)
+        visited = set()
+        current_path = [0] * V
+
+        def dfs(node):
+            visited.add(node)
+            current_path[node] = 1
+
+            for neighbor in graph[node]:
+                if neighbor not in visited:
+                    if dfs(neighbor):  # found a cycle
+                        return True
+                elif current_path[neighbor] == 1:
+                    return True  # back edge -> cycle
+
+            current_path[node] = 0  # backtrack
+
+            return False
+
+        for node in range(V):
+            if node not in visited:
+                dfs(node)
+
+        result = [i for i in range(V) if current_path[i] == 0]
+        return result
+
+
+
+
 class Solution:
     def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
 
