@@ -1,6 +1,5 @@
 # https://www.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1
 
-
 from collections import defaultdict
 
 class Solution:
@@ -36,27 +35,3 @@ class Solution:
                     return True
         return False
 
-#{ 
- # Driver Code Starts
-from collections import deque
-
-
-def main():
-    tc = int(input())
-    for _ in range(tc):
-        V = int(input())
-        E = int(input())
-        edges = []
-        for _ in range(E):
-            u, v = map(int, input().split())
-            edges.append((u, v))
-
-        obj = Solution()
-        ans = obj.isCycle(V, edges)
-        print("true" if ans else "false")
-
-
-if __name__ == "__main__":
-    main()
-
-# } Driver Code Ends
