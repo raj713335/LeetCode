@@ -5,6 +5,47 @@
 import heapq
 from collections import defaultdict
 
+
+class Solution:
+    # Returns shortest distances from src to all other vertices
+    def dijkstra(self, V, edges, src):
+        # Step 1: Build adjacency list
+        graph = defaultdict(list)
+        for u, v, w in edges:
+            graph[u].append((v, w))
+            graph[v].append((u, w))  # since the graph is undirected
+
+        # Step 2: Initialize min-heap and distance array
+        heap = [(0, src)]  # (distance, node)
+        dist = [float('inf')] * V
+        dist[src] = 0
+
+        # Step 3: Dijkstra's loop
+        while heap:
+            curr_dist, u = heapq.heappop(heap)
+
+            # Skip if we already found a better distance
+            if curr_dist > dist[u]:
+                continue
+
+            for v, weight in graph[u]:
+                if dist[u] + weight < dist[v]:
+                    dist[v] = dist[u] + weight
+                    heapq.heappush(heap, (dist[v], v))
+
+        return dist
+
+
+
+
+
+
+
+
+
+import heapq
+from collections import defaultdict
+
 class Solution:
     def minCost(self, maxTime: int, edges: List[List[int]], passingFees: List[int]) -> int:
 
