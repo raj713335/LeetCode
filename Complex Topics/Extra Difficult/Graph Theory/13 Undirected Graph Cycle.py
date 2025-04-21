@@ -1,5 +1,7 @@
 # https://www.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/
 
+# DFS Cycle Detection 
+
 from collections import defaultdict
 
 class Solution:
@@ -33,30 +35,33 @@ class Solution:
 		            return True
 		return False
 
+# BFS Cycle detection
 
-#{ 
- # Driver Code Starts
-import sys
-#Position this line where user code will be pasted.
+from collections import deque
+
+def has_cycle_undirected(graph):
+    visited = set()
+
+    def bfs(start):
+        queue = deque([(start, -1)])  # (node, parent)
+        visited.add(start)
+
+        while queue:
+            node, parent = queue.popleft()
+
+            for neighbor in graph[node]:
+                if neighbor not in visited:
+                    visited.add(neighbor)
+                    queue.append((neighbor, node))
+                elif neighbor != parent:
+                    # If visited and not parent, a cycle exists
+                    return True
+        return False
+
+    for node in graph:
+        if node not in visited:
+            if bfs(node):
+                return True
+    return False
 
 
-def main():
-    tc = int(input())
-    for _ in range(tc):
-        V = int(input())
-        E = int(input())
-        edges = []
-        for _ in range(E):
-            u, v = map(int, input().split())
-            edges.append((u, v))
-
-        obj = Solution()
-        ans = obj.isCycle(V, edges)
-        print("true" if ans else "false")
-        print("~")
-
-
-if __name__ == "__main__":
-    main()
-
-# } Driver Code Ends
