@@ -2,6 +2,7 @@
 
 from collections import defaultdict, deque
 
+# BFS Solution
 
 class Solution:
     
@@ -44,7 +45,7 @@ class Solution:
         else:
             return []  # Cycle exists (not possible in DAG by definition)
         
-
+# DFS Solution
 
 class Solution:
     
