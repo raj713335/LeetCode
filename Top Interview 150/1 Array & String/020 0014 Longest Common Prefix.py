@@ -1,4 +1,27 @@
-# https://leetcode.com/problems/longest-common-prefix/description/?envType=study-plan-v2&envId=top-interview-150
+# https://leetcode.com/problems/longest-common-prefix/description/
+
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+
+        index = 0
+        n = len(strs)
+
+        flag = True
+
+        while flag and index < len(strs[0]):
+            try:
+                val = strs[0][index]
+                for i in range(1, n):
+                    if val != strs[i][index]:
+                        flag = False
+                
+                if flag:
+                    index += 1
+            except:
+                flag = False
+
+        return strs[0][:index]
+             
 
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
