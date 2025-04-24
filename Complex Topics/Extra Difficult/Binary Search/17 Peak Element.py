@@ -1,0 +1,20 @@
+def find_peak_element(arr):
+    low, high = 0, len(arr) - 1
+
+    while low <= high:
+        mid = (low + high) // 2
+
+        left = arr[mid - 1] if mid > 0 else float('-inf')
+        right = arr[mid + 1] if mid < len(arr) - 1 else float('-inf')
+
+        if arr[mid] >= left and arr[mid] >= right:
+            return mid  # Return index of peak
+        elif arr[mid] < right:
+            low = mid + 1
+        else:
+            high = mid - 1
+
+# Example usage:
+arr = [1, 3, 20, 4, 1, 0]
+index = find_peak_element(arr)
+print(f"Peak element is {arr[index]} at index {index}")
