@@ -1,6 +1,9 @@
 # Minimum Spanning Tree
 A spanning tree (ST) is a subgraph where all vertices are connected with minimum number of edges. A minimum spanning tree (MST) is a ST of a weighted undirected graph, where the total edge weight is minimum. There are mainly two algorithms to find a MST of a graph, ```Kruskal's Algorithm with Union-find``` and ```Prim's algorithm with heap```.
 
+1. Prims Algorithm. [here](https://www.geeksforgeeks.org/prims-minimum-spanning-tree-mst-greedy-algo-5/)
+2. Kruskal’s Algorithm. [here](https://www.geeksforgeeks.org/kruskals-minimum-spanning-tree-algorithm-greedy-algo-2/)
+
 ## Cut & Cut Property
 In Graph theory, a “cut” is a partition of vertices in a “graph” into two disjoint subsets. From wiki, the "cut property" is defined as:   
 ```
