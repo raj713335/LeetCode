@@ -5,13 +5,13 @@ class Solution:
         
         arr = values
         n = len(arr)
-        dp = [[-1] * n for _ in range(n)]
+        dp = {}
 
         def solve(i, j):
             if i == j:
                 return 0
-            if dp[i][j] != -1:
-                return dp[i][j]
+            if (i, j) in dp:
+                return dp[(i, j)]
 
             min_cost = float('inf')
 
@@ -23,8 +23,8 @@ class Solution:
                 )
                 min_cost = min(min_cost, cost)
 
-            dp[i][j] = min_cost
-            return min_cost
+            dp[(i, j)] = min_cost
+            return dp[(i, j)]
 
         return solve(1, n - 1)
         
