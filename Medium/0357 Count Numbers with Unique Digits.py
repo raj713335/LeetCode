@@ -34,3 +34,22 @@ class Solution:
 
         # The result is the sum of valid numbers with 1 to n digits
         return count(n)
+
+
+class Solution:
+    def countNumbersWithUniqueDigits(self, n: int) -> int:
+        
+        # Base case when n == 0
+        if n == 0:
+            return 1
+
+        # Start by calculating the unique numbers for each digit length 1 to n
+        result = 10  # For n = 1, all numbers from 0 to 9 are valid
+        product = 9  # For n = 1, the first digit can be any of 9 (1 to 9)
+
+        # For each subsequent number length from 2 to n
+        for i in range(2, n + 1):
+            product *= (11 - i)  # (10 - i) gives us the count of available digits for each position
+            result += product  # Add the count of valid numbers with i digits
+
+        return result
