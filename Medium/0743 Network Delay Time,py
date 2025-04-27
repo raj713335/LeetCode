@@ -1,0 +1,38 @@
+# https://leetcode.com/problems/network-delay-time/description/
+
+import heapq
+
+class Solution:
+    def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
+
+        # Step 1: Build the graph
+        graph = {i: [] for i in range(1, n + 1)}
+        for u, v, w in times:
+            graph[u].append((v, w))
+        
+        # Step 2: Min Heap (time, node)
+        heap = [(0, k)]  # Start at node k with time 0
+        
+        # Step 3: Distance map
+        dist = {}
+        
+        while heap:
+            time, node = heapq.heappop(heap)
+            
+            # If already visited, skip
+            if node in dist:
+                continue
+            
+            dist[node] = time
+            
+            # Step 4: Push neighbors into the heap
+            for neighbor, weight in graph[node]:
+                if neighbor not in dist:
+                    heapq.heappush(heap, (time + weight, neighbor))
+        
+        # Step 5: Check if all nodes are reached
+        if len(dist) == n:
+            return max(dist.values())
+        else:
+            return -1
+        
