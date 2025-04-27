@@ -1,5 +1,37 @@
 # https://leetcode.com/problems/palindrome-partitioning-ii/description/
 
+class Solution:
+    def minCut(self, s: str) -> int:
+        n = len(s)
+    
+        # Precompute palindrome table
+        is_palindrome = [[False]*n for _ in range(n)]
+        
+        for i in range(n-1, -1, -1):
+            for j in range(i, n):
+                if s[i] == s[j] and (j - i <= 2 or is_palindrome[i+1][j-1]):
+                    is_palindrome[i][j] = True
+
+        memo = {}
+
+        def dfs(i):
+            if i == n:
+                return -1  # no cuts needed if we're done
+            if i in memo:
+                return memo[i]
+            
+            min_cuts = float('inf')
+            for j in range(i, n):
+                if is_palindrome[i][j]:
+                    cuts = 1 + dfs(j+1)
+                    min_cuts = min(min_cuts, cuts)
+            
+            memo[i] = min_cuts
+            return min_cuts
+        
+        return dfs(0)
+
+
 
 # Normal Method 
 
