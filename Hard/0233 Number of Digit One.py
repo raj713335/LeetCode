@@ -45,4 +45,40 @@ class Solution:
         
         # Call the function for n
         return count_ones(n)
+
+
+
+class Solution:
+    def countDigitOne(self, n: int) -> int:
+
+        def count_ones(x):
+            # Base case
+            if x <= 0:
+                return 0
+            
+            # We will find how many times 1 appears in all digits from 0 to x.
+            # For example, for x = 234, we want to count how many 1's appear in the
+            # units place, tens place, hundreds place, and so on.
+            
+            # Convert number to string to get the length
+            s = str(x)
+            length = len(s)
+            first_digit = int(s[0])
+            remaining_digits = int(s[1:]) if length > 1 else 0
+            
+            # Count the number of ones in the first digit
+            count = 0
+            # If the first digit is greater than 1, we can count 1 for all remaining combinations
+            if first_digit > 1:
+                count += (10 ** (length - 1)) * first_digit
+            # If the first digit is exactly 1, count all numbers starting from the remaining part
+            elif first_digit == 1:
+                count += remaining_digits + 1
+            # Count ones in the lower digits recursively
+            count += count_ones(remaining_digits) + (first_digit * (length - 1) * 10 ** (length - 2))
+            
+            return count
+        
+        return count_ones(n)
+
         
