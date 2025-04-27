@@ -22,7 +22,7 @@ Taking advantage of the cut property, we have the above mentioned two algorithms
 ```
 Time complexity is O(ElogE + E&alpha;(V)) = O(ElogE). See [here](https://github.com/shiwentao00/Python-cheat-sheet/blob/main/graph/kruskal_algorithm.py) for an example implementation.   
 Examples:    
-1. Leetcode 1135. Connecting Cities With Minimum Cost. 
+1. Leetcode 1135. Connecting Cities With Minimum Cost. [here](https://github.com/raj713335/LeetCode/blob/dev/Medium/1135%20Connecting%20Cities%20With%20Minimum%20Cost%20(Premium)%20.md)
 2. Leetcode 1584. Min Cost to Connect All Points. [here](https://leetcode.com/problems/min-cost-to-connect-all-points/description/)
 3. Leetcode 1489. Find Critical and Pseudo-Critical Edges in Minimum Spanning Tree [here](https://leetcode.com/problems/find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree/description/)
 
