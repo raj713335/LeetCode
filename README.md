@@ -4,7 +4,7 @@
   <img src="Data/dsa_algorithm.png" />
 </p> 
 
---
+<hr>
 
 
 ![Chrome Dino](https://theabbie.github.io/blog/assets/leetcode-grinding-guide.jpg)
