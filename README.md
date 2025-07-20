@@ -8,7 +8,7 @@
 
 <br>
 
-<h1 align="center"><a href="https://leetcode.com/u/raj713335/"> LeetCode Profile: </a></h1>
+<h1 align="center"><a href="https://leetcode.com/u/raj713335/"> LeetCode Profile </a></h1>
 
 <br>
 
