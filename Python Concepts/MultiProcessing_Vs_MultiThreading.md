@@ -49,6 +49,20 @@ API health checks are **I/O-bound**, and using threads will efficiently overlap 
 
 #### Threading Example:
 
+
+```python
+from threading import Thread
+import threading
+
+def worker():
+    print(f"Thread {threading.get_ident()} is running")
+
+for _ in range(3):
+    t = Thread(target=worker)
+    t.start()
+```
+
+
 ```python
 from concurrent.futures import ThreadPoolExecutor
 import requests
@@ -62,7 +76,22 @@ with ThreadPoolExecutor() as executor:
     print(list(executor.map(fetch, urls)))
 ```
 
+
 #### Multiprocessing Example:
+
+```python
+from multiprocessing import Process
+import os
+
+def worker():
+    print(f"Process {os.getpid()} is running")
+
+if __name__ == "__main__":
+    for _ in range(3):
+        p = Process(target=worker)
+        p.start()
+```
+
 
 ```python
 from concurrent.futures import ProcessPoolExecutor
@@ -77,6 +106,7 @@ if __name__ == "__main__":
     with ProcessPoolExecutor() as executor:
         print(list(executor.map(fetch, urls)))
 ```
+
 
 ### ⚠️ Caveat:
 
