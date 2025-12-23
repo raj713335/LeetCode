@@ -4,17 +4,17 @@ import pandas as pd
 
 def calculate_salaries(salaries: pd.DataFrame) -> pd.DataFrame:
 
-    # Step 1: find max salary per company
-    max_salary = salaries.groupby('company_id')['salary'].transform('max')
+    # Find max salary for all companies 
+    salaries['max_sal'] = salaries.groupby('company_id')['salary'].transform('max')
 
-    # Step 2: determine tax rate per row (based on company max)
-    tax_rate = pd.Series(0.0, index=salaries.index)
+    # Create a tax rate column (1 - tax rate)
+    salaries['tax_rate'] = salaries['max_sal'].apply(lambda x: 1 if x < 1000 else(.76 if x <= 10000 else (.51)))
 
-    tax_rate[(max_salary >= 1000) & (max_salary <= 10000)] = 0.24
-    tax_rate[max_salary > 10000] = 0.49
+    # Multiply salary by tax_rate 
+    salaries['post_tax'] = (salaries['salary'] * salaries['tax_rate']).apply(lambda x: round(x) if x % 1 != 0.5 else (np.ceil(x)))
 
-    # Step 3: apply tax and round
-    salaries['salary'] = (salaries['salary'] * (1 - tax_rate)).round().astype(int)
+    salaries = salaries.drop(columns=['salary','max_sal','tax_rate']).rename(columns={'post_tax':'salary'})
 
     return salaries
+    
     
