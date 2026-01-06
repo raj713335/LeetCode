@@ -122,6 +122,30 @@ Using `requests` inside `multiprocessing` can lead to **higher overhead and some
 | Parallelism       | Limited (GIL)  | True parallelism         |
 | Memory usage      | Low (shared)   | Higher (separate memory) |
 | Complexity        | Lower          | Higher                   |
-| API Health Checks | ✅ Recommended  | ❌ Overkill               |
+| API Health Checks | ✅ Recommended  | ❌ Overkill            |
+
+
+```
+from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor
+import requests
+
+
+urls = ["https://google.com"] * 4
+
+
+def fetch(url):
+    return requests.get(url).status_code
+
+
+if __name__ =="__main__":
+    
+    # Thread Pool (best for I/O-bound tasks)
+    with ThreadPoolExecutor() as executor:
+        print(list(executor.map(fetch, urls)))
+
+    # Process Pool (best for CPU-bound tasks)
+    with ProcessPoolExecutor() as executor:
+        print(list(executor.map(fetch, urls)))
+```
 
 
