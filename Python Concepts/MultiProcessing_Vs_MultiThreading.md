@@ -125,7 +125,7 @@ Using `requests` inside `multiprocessing` can lead to **higher overhead and some
 | API Health Checks | ✅ Recommended  | ❌ Overkill            |
 
 
-```
+```python
 from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor
 import requests
 
