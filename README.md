@@ -1,4 +1,12 @@
-<h1 align="center"><a href="https://www.udemy.com/course/leetcode-top-150-interview-questions-with-python/"> Data Structures and Algorithms: Using Python </a></h1>
+<h1 align="center">
+  <a href="https://www.udemy.com/course/leetcode-top-150-interview-questions-with-python/?referralCode=DB19AA1CE6FDCC2A7D17"> 
+    Data Structures and Algorithms: Using Python 
+  </a>
+</h1>
+
+<p align="center">
+  Learn and understand how to solve coding problems using different algorithms and data structures to crack IT interviews
+</p>
 
 <p align="center">
   <img src="Data/dsa_algorithm.png" />
